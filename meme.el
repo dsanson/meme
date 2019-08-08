@@ -42,7 +42,7 @@
 (defvar meme-svg)
 (defvar meme-animation)
 (defvar meme-column)
-(defvar meme-font "impact")
+(defvar meme-font "Impact")
 (defvar meme--timer nil)
 
 (defun meme ()
@@ -51,6 +51,7 @@
   (switch-to-buffer (get-buffer-create "*meme*"))
   (meme-mode)
   (meme--insert-thumbnails)
+  (evil-insert-state)
   (setq-local post-command-hook nil)
   (setq-local meme-column 0)
   (add-hook 'post-command-hook 'meme--fix-point))
@@ -290,7 +291,7 @@
 		  :stroke "black"
 		  :fill (meme--value data :color)
 		  :font-family (meme--value data :family)
-		  :letter-spacing (format "-%spt" (* font-size 0.07))
+		  :letter-spacing (format "-%spt" (* font-size 0.0))
 		  :font-stretch 'condensed
 		  :stroke-width (cadr type)
 		  :text-anchor (cond
